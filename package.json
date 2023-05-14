@@ -1,0 +1,11 @@
+{
+  "name": "master_reactjs",
+  "version": "1.0.0",
+  "description": "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!",
+  "main": "arrow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

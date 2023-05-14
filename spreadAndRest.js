@@ -12,7 +12,7 @@ console.log(newObj);
 
 // Rest Operator
 const filter = (...args) =>{
-    return args.sort();
+    return args.sort(function(a,b) {return a-b});
 }
 console.log(filter(1,23,52,54,74,5,2))
 
