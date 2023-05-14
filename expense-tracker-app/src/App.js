@@ -1,3 +1,4 @@
+import NewExpense from "./components/ExpenseForm/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 
 const App = ()=> {
@@ -27,10 +28,12 @@ const App = ()=> {
       date: new Date(2023, 4, 21),
     },
   ];
+  const addExpenseHandler = (expense)=>{
+    console.log(expense);
+  }
   return (
     <div>
-      <h2>Let's get started!</h2>
-      <p>Praful.Coder is cool!</p>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenseArray}/>
     </div>
   );
