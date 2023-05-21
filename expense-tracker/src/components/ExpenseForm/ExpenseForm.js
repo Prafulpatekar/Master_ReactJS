@@ -7,59 +7,38 @@ const ExpenseForm = (props) => {
   const [inputAmount, setInputAmount] = useState("");
   const [inputDate, setInputDate] = useState("");
 
-  // Multiple state method
-  //   const [userInput, setUserInput] = useState({
-  //     inputTitle: "",
-  //     inputAmount: "",
-  //     inputDate: "",
-  //   });
-
   const titleChangeHandler = (event) => {
     setInputTitle(event.target.value); // ONE State method
-    // MULTIPLE State method
-    // setUserInput({
-    //   ...userInput,
-    //   inputTitle: event.target.value,
-    // });
-    // Previous state method
-    // setUserInput((prevState) => {
-    //   return { ...prevState, inputTitle: event.target.value };
-    // });
   };
   const amountChangeHandler = (event) => {
     setInputAmount(event.target.value);
-    // setUserInput({
-    //   ...userInput,
-    //   inputAmount: event.target.value,
-    // });
   };
   const dateChangeHandler = (event) => {
     setInputDate(event.target.value);
-    // setUserInput({
-    //   ...userInput,
-    //   inputDate: event.target.value,
-    // });
   };
-  const onSubmitHandler = (event)=>{
+  const onSubmitHandler = (event) => {
     event.preventDefault();
     const expenseData = {
-      title:inputTitle,
-      amout:inputAmount,
-      date:new Date(inputDate),
+      title: inputTitle,
+      amount: inputAmount,
+      date: new Date(inputDate),
     };
-    // console.log(expenseData);
     props.onSaveExpenseData(expenseData);
-    setInputTitle('');
-    setInputAmount('');
-    setInputDate('');
-
-  }
+    setInputTitle("");
+    setInputAmount("");
+    setInputDate("");
+  };
   return (
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={onSubmitHandler} >
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" name="title" value={inputTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            name="title"
+            value={inputTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -84,8 +63,10 @@ const ExpenseForm = (props) => {
           />
         </div>
       </div>
+      
       <div className="new-expense__actions">
-        <button>Add Expense</button>
+        <button onClick={props.formHandler} type="reset">Close</button>
+        <button type="submit">Add</button>
       </div>
     </form>
   );

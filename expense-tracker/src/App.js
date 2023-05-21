@@ -1,8 +1,9 @@
+import { useState } from "react";
 import NewExpense from "./components/ExpenseForm/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 
 function App() {
-  const expenseArray = [
+  const DATA = [
     {
       id: "e1",
       title: "Room Rent",
@@ -13,13 +14,13 @@ function App() {
       id: "e2",
       title: "Grocery",
       amount: 150,
-      date: new Date(2023, 4, 10),
+      date: new Date(2022, 4, 10),
     },
     {
       id: "e3",
       title: "Food & Drinks",
       amount: 311,
-      date: new Date(2023, 4, 13),
+      date: new Date(2021, 4, 13),
     },
     {
       id: "e4",
@@ -28,13 +29,21 @@ function App() {
       date: new Date(2023, 4, 21),
     },
   ];
-  const addExpenseHandler = (expense)=>{
-    console.log(expense);
-  }
+  const [expenses, setData] = useState(DATA);
+  const addExpenseHandler = (expense) => {
+    const { title, amount, date } = expense;
+    if (!title || !amount || !date) {
+      alert("All fields are mandatory!");
+    } else {
+      setData((prevExpenses) => {
+        return [expense, ...prevExpenses];
+      });
+    }
+  };
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses expenses={expenseArray}/>
+      <Expenses items={expenses} />
     </div>
   );
 }
